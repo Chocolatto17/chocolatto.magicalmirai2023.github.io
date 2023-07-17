@@ -1,0 +1,357 @@
+body {
+    padding: 0;
+    margin: 0
+}
+
+#unity-container {
+    position: absolute
+}
+
+#unity-container.disabled {
+    display: none
+}
+
+#unity-container.unity-desktop {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%)
+}
+
+#unity-container.unity-mobile {
+    width: 100%;
+    height: 100%
+}
+
+#unity-canvas {
+    background: #231F20
+}
+
+.unity-mobile #unity-canvas {
+    width: 100%;
+    height: 100%
+}
+
+#unity-loading-bar {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: none
+}
+
+#unity-footer {
+    position: relative
+}
+
+.unity-mobile #unity-footer {
+    display: none
+}
+
+#unity-build-title {
+    float: right;
+    margin-right: 10px;
+    line-height: 38px;
+    font-family: arial;
+    font-size: 18px
+}
+
+#unity-fullscreen-button {
+    float: right;
+    width: 38px;
+    height: 38px;
+    background: url('/image/fullscreen-button.png') no-repeat center
+}
+
+#unity-warning {
+    position: absolute;
+    left: 50%;
+    top: 5%;
+    transform: translate(-50%);
+    background: white;
+    padding: 10px;
+    display: none
+}
+
+/* 背景 / Background */
+body {
+    background: #c33c68;
+    background-image: linear-gradient(0deg,
+            #c33c68 0,
+            #bf6096 30%,
+            #266da2 60%,
+            #76dddb 100%);
+    background-attachment: fixed;
+    background-size: 100vw 100vh;
+}
+
+/* オーバーレイ / Overlay */
+#overlay {
+    user-select: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #0006;
+    color: #fffc;
+    z-index: 5;
+}
+
+#overlay.disabled {
+    display: none;
+}
+
+#overlay.row {
+    width: auto;
+}
+
+#overlay.flex-item {
+    padding: 5px;
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+    line-height: 20px;
+}
+
+#text-loading {
+    width: 100vw;
+    font-size: 40px;
+    text-align: center;
+}
+
+#text-loading.disabled {
+    display: none;
+}
+
+/* フッターと音源 / Header and audio source */
+#header,
+#media {
+    /* ページ左に固定 / Stick to the page left */
+    position: fixed;
+    left: 0;
+
+    /* 背景色と文字色 / Background and text color */
+    background: #000c;
+    color: #fff;
+
+    z-index: 1;
+}
+
+/* フッター / Footer */
+#header {
+    /* 上寄せ / Top-aligned */
+    top: 20px;
+
+    /* 少し余裕を持たせる / Box with a small padding */
+    padding: 10px 16px;
+
+    /* フォントサイズ小さめ、太め / Small but bold typography */
+    font-size: 10.5px;
+    font-weight: bold;
+
+    /* 子要素を横に並べて配置 / Align child content to the right */
+    display: flex;
+
+    /* 子要素は縦に中央揃え / Vertically middle-aligned */
+    align-items: center;
+}
+
+/* 再生ボタン / Play button */
+#control {
+    font-size: 21px;
+    padding-right: 10px;
+    border-right: 1px solid #fff9;
+}
+
+#control.disabled {
+    display: none;
+}
+
+#control a {
+    color: rgb(99 208 226);
+    text-decoration: none;
+}
+
+#control a.disabled {
+    opacity: 0.3;
+}
+
+#control a:hover {
+    color: rgb(255 148 56);
+}
+
+/* アーティストと楽曲の情報 / Artist and song info */
+#meta {
+    padding-left: 10px;
+}
+
+#meta span {
+    font-weight: normal;
+}
+
+/* 音源 / Audio source */
+#media {
+    /* 下寄せ / Bottom-aligned */
+    bottom: 10px;
+}
+
+#media.disabled>.textalive-media-wrapper {
+    width: 0;
+    height: 0;
+}
+
+/* ビートバー / Beat bar */
+#bar {
+    opacity: 0;
+    height: 3px;
+    background: rgb(255 222 193);
+}
+
+#bar.active {
+    animation: activateBeatBar 0.3s;
+}
+
+#bar.beat {
+    animation: showBeatBar 0.5s;
+}
+
+/* 歌詞 / Lyrics */
+#lyrics {
+    z-index: 0;
+    padding: 3em 0 5em 0;
+    line-height: 2em;
+    font-size: 36px;
+    font-family: "Shippori Mincho B1", serif;
+    color: #fddaff;
+    text-shadow: 2px 2px 3px #e4215a;
+    user-select: none;
+    cursor: pointer;
+
+    /* 歌詞をちょっと回転させる / Rotate text */
+    transform: rotateX(10deg) rotateY(-10deg);
+}
+
+#text>div {
+    /* 文字ごとに改行しない / No line-break per char */
+    display: inline-block;
+    /* 溢れた部分を隠す / Hide overflow content */
+    /* overflow: hidden; */
+    /* 高さ指定で文字をあえて溢れさす / Make text overflow with height specified */
+    /* height: 45px; */
+}
+
+#text>div>div {
+    animation: showLyrics 0.5s;
+}
+
+/**
+ * 名詞などを強調表示する
+ * Emphasize nouns
+ */
+#text .noun {
+    color: #ddf9ff;
+    font-size: 40px;
+}
+
+/**
+ * フレーズ終わりで右にマージンを空けて読みやすくする
+ * Add right margin to the last char in phrases
+ */
+#text .lastChar {
+    margin-right: 40px;
+}
+
+#text .firstCharInEnglishWord {
+    margin-left: 20px;
+}
+
+#text .lastCharInEnglishWord {
+    margin-right: 20px;
+}
+
+#text .lastCharInEnglishWord+.firstCharInEnglishWord {
+    margin-left: 0;
+}
+
+#seekbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: rgba(255 255 255 / 100%);
+}
+
+#seekbar>div {
+    width: 0;
+    height: 100%;
+    background: rgba(0, 255, 234, 0.8);
+}
+
+#button-start {
+    background: #fff;
+    backface-visibility: hidden;
+    border-radius: .375rem;
+    border-style: solid;
+    border-width: .125rem;
+    box-sizing: border-box;
+    color: #212121;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Circular, Helvetica, sans-serif;
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: -.01em;
+    line-height: 1.3;
+    padding: .875rem 1.125rem;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transform: translateZ(0) scale(1);
+    transition: transform .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+#button-start:not(:disabled):hover {
+    transform: scale(1.05);
+}
+
+#button-start:not(:disabled):hover:active {
+    transform: scale(1.05) translateY(.125rem);
+}
+
+#button-start:focus {
+    outline: 0 solid transparent;
+}
+
+#button-start:focus:before {
+    content: "";
+    left: calc(-1*.375rem);
+    pointer-events: none;
+    position: absolute;
+    top: calc(-1*.375rem);
+    transition: border-radius;
+    user-select: none;
+}
+
+#button-start:focus:not(:focus-visible) {
+    outline: 0 solid transparent;
+}
+
+#button-start:focus:not(:focus-visible):before {
+    border-width: 0;
+}
+
+#button-start:not(:disabled):active {
+    transform: translateY(.125rem);
+}
+
+#button-start.disabled {
+    display: none
+}
